@@ -9,6 +9,7 @@ Bucket 2: Business Clarity
     Show ratios instead of only raw numbers
     Show percentages where meaningful
     Add benchmark indicators
+    Add ranges to chart if min and max values are known e.g(Satisfaction Score)
 Bucket 3: Executive Storytelling
     Add insight callouts
     Explain what management should notice
