@@ -529,7 +529,7 @@ app.layout=html.Div(
     Input("drpd-agegroup", "value"),
     Input("drpd-demographicAgeMetrics", "value"),
 )
-def drpd_departmentOperationMetrics_callback(
+def drpd_demographicMetrics_callback(
     selected_age_group, selected_demographic_metric):
     strY = "department"
     strYTitle = "Department"
@@ -637,7 +637,7 @@ def drpd_departmentOperationMetrics_callback(selected_operation_metric):
         case "triage_wait_time":
             strX = "avg_wait_time_triage_min"  #dfEDOperationOverview["avg_wait_time_triage_min"]
             strCCX = "avg_critical_wait_time_triage_min"  #dfEDOperationOverview["avg_critical_wait_time_triage_min"]
-            strTitle = "Trigae Wait Time by Department"
+            strTitle = "Triage Wait Time by Department"
             strXTitle = "Triage Wait-Time (Min)"
         case "length_of_stay":
             strX = "avg_length_of_stay_hrs"  #dfEDOperationOverview["avg_length_of_stay_hrs"]
@@ -710,7 +710,7 @@ def drpd_departmentMetrics_callback(selected_metric):
         case "Wait-Time":
             strX = "avg_wait_time_doctor_min"  #dfExecutiveDeptOverview["avg_wait_time_doctor_min"]
             strTitle = "Triage Wait Time by Department (Min)"
-            strXTitle = "Traige Wait Time (Min)"
+            strXTitle = "Triage Wait Time (Min)"
             strInsuranceX="avg_wait_time" #dfInsuranceOverview["avg_wait_time"]
             strInsuranceTitle = "Insurance Type Impact on Patient Triage Wait Times"
         case "Satisfaction":
