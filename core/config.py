@@ -9,6 +9,7 @@ DB_PATH = DATA_DIR / "ed_patient_data.db"
 CSV_DIR = DATA_DIR / "raw_csvs"  # <--- Lives safely inside your data folder
 VISUALS_DIR = PROJECT_ROOT / "visuals" 
 
-# Automatically create both folders on startup if they don't exist
+# Automatically create data,csv,visuals folders on startup if they don't exist
 DATA_DIR.mkdir(parents=True, exist_ok=True)
 CSV_DIR.mkdir(parents=True, exist_ok=True)
+VISUALS_DIR.mkdir(parents=True, exist_ok=True)
