@@ -20,11 +20,11 @@ SQL Views
 
        ↓
 
-Data Access Layer (DAL)
+Data Access Layer (dal)
 
        ↓
 
-Business Layer (Biz)
+Business Layer (biz)
 
        ↓
 
@@ -149,29 +149,33 @@ For dashboard analysis:
 Follow these steps to set up the database, generate the SQL views, and launch the interactive Dash application locally:
 
 1. **Clone the repository**
-     ```bash
      git clone [https://github.com/PavaniDev-Platform/HealthcareAnalytics.git](https://github.com/PavaniDev-Platform/HealthcareAnalytics.git)
      cd HealthcareAnalytics
-2. **Create a virtual environment & install dependencies**
+   
+3. **Create a virtual environment & install dependencies**
       python -m venv venv
       # On Windows:
       venv\Scripts\activate
       # On macOS/Linux:
       source venv/bin/activate
       pip install -r requirements.txt
-3. **Initialize the SQLite database & SQL views**
+   
+4. **Initialize the SQLite database & SQL views**
       python dal/setup_manager.py
-4.  **Launch the Dash dashboard**
-## Project Structure
+   
+5.  **Launch the Dash dashboard**
       python dashboards/emergency_department_dashboard.py
       Open your browser and navigate to http://127.0.0.1:8050/.
+---
+## Project Structure
+     
 HealthCareAnalysis
 
 │
 
-├── Biz
+├── biz
 
-├── Dal
+├── dal
 
 ├── core
 
