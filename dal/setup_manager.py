@@ -7,6 +7,7 @@ if str(project_root) not in sys.path:
     sys.path.append(str(project_root))
 # Import your config paths
 from core.config import CSV_DIR
+
 #print(CSV_DIR)
 from dal.emergency_department_dal import EmergencyDepartmentDAL
 #=====================Loading CSV==========================================
@@ -19,3 +20,6 @@ db = EmergencyDepartmentDAL()
 #Calling load dataframe method by passing dataframe and name of the table to create
 db.load_dataframe(dfERPatientData,"ed_patient_data")
 print("Emergency Patient Data Loaded")
+# 2. Automatically execute all SQL view scripts
+db.load_sqlscripts()
+print("SQL views initialized successfully!")

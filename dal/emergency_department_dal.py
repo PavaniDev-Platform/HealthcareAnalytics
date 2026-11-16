@@ -7,7 +7,7 @@ project_root=Path(__file__).resolve().parent.parent
 if str(project_root) not in sys.path:
     sys.path.append(str(project_root))
 # Import your config paths
-from core.config import DB_PATH
+from core.config import DB_PATH,SQL_DIR
 
 class EmergencyDepartmentDAL:
     '''Used to load data into dataframes and manage SQLite connection'''
@@ -22,12 +22,21 @@ class EmergencyDepartmentDAL:
             if_exists="replace",
             index=False
         )
-
     def run_query(self, query):
         return pd.read_sql(
             query,
             self.conn
         )
+    def load_sqlscripts(self):
+        for sql_file in sorted(SQL_DIR.glob("*.sql")):
+            with open(sql_file, "r", encoding="utf-8") as f:
+                view_sql = f.read()
+            self.conn.executescript(view_sql)
+            print(f"Created view from: {sql_file.name}")
+    def close(self):
+        if self.conn:
+            self.conn.close()    
+       
 
 
      

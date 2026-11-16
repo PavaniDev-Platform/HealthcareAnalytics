@@ -7,6 +7,7 @@ PROJECT_ROOT = Path(__file__).resolve().parent.parent
 DATA_DIR = PROJECT_ROOT / "data"
 DB_PATH = DATA_DIR / "ed_patient_data.db"
 CSV_DIR = DATA_DIR / "raw_csvs"  # <--- Lives safely inside your data folder
+SQL_DIR =  DATA_DIR / "sql_views"
 VISUALS_DIR = PROJECT_ROOT / "visuals" 
 
 # Automatically create data,csv,visuals folders on startup if they don't exist
