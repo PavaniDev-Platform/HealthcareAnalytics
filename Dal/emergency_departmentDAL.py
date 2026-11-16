@@ -13,7 +13,7 @@ class EmergencyDepartmentDAL:
     '''Used to load data into dataframes and manage SQLite connection'''
     def __init__(self, db_name="ed_patient_data.db"):
         print(f"-> Connected to Central Database at: {DB_PATH}")
-        self.conn = sqlite3.connect(DB_PATH)
+        self.conn = sqlite3.connect(DB_PATH,check_same_thread=False)
 
     def load_dataframe(self, df, table_name):
         df.to_sql(
