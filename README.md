@@ -173,15 +173,15 @@ HeathCareAnalysis
 
 ### Executive Overview
 
-Screenshot coming soon
+visuals/executive_overview.jpeg
 
 ### Operations Overview
 
-Screenshot coming soon
+operation_overview.jpeg
 
 ### Admission Trends & Demographics
 
-Screenshot coming soon
+operation_overview.jpeg
 
 ### Quality of Care
 
