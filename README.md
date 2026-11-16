@@ -147,7 +147,7 @@ For dashboard analysis:
 
 ## Project Structure
 
-HeathCareAnalysis
+HealthCareAnalysis
 
 │
 
@@ -164,6 +164,8 @@ HeathCareAnalysis
 ├── docs
 
 ├── notebooks
+
+├── visuals
 
 └── README.md
 
