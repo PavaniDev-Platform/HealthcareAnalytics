@@ -18,7 +18,7 @@ Bucket 3: Executive Storytelling
     Severity-adjusted interpretations
     Insurance-adjusted interpretations
     Age-group insights
-    
+Added professional healthcare dashboard color guidelines.  
 Business Meaning	Color	            Hex
 Critical Cases	    Muted Red	        #D9534F
 General Cases	    Professional Blue	#4E79A7
