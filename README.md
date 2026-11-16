@@ -148,24 +148,24 @@ For dashboard analysis:
 
 Follow these steps to set up the database, generate the SQL views, and launch the interactive Dash application locally:
 
-1. **Clone the repository**
-     git clone [https://github.com/PavaniDev-Platform/HealthcareAnalytics.git](https://github.com/PavaniDev-Platform/HealthcareAnalytics.git)
-     cd HealthcareAnalytics
-   
-3. **Create a virtual environment & install dependencies**
-      python -m venv venv
-      # On Windows:
-      venv\Scripts\activate
-      # On macOS/Linux:
-      source venv/bin/activate
-      pip install -r requirements.txt
-   
-4. **Initialize the SQLite database & SQL views**
-      python dal/setup_manager.py
-   
-5.  **Launch the Dash dashboard**
-      python dashboards/emergency_department_dashboard.py
-      Open your browser and navigate to http://127.0.0.1:8050/.
+1.   ### Clone the repository
+          git clone [https://github.com/PavaniDev-Platform/HealthcareAnalytics.git](https://github.com/PavaniDev-Platform/HealthcareAnalytics.git)
+          cd HealthcareAnalytics
+---
+3.    ### Create a virtual environment & install dependencies
+           python -m venv venv
+           ## On Windows:
+           venv\Scripts\activate
+           ## On macOS/Linux:
+           source venv/bin/activate
+           pip install -r requirements.txt
+---
+4.    ### Initialize the SQLite database & SQL views
+           python dal/setup_manager.py
+---
+5.    ### Launch the Dash dashboard
+           python dashboards/emergency_department_dashboard.py
+           Open your browser and navigate to http://127.0.0.1:8050/.
 ---
 ## Project Structure
      
