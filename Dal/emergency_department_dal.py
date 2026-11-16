@@ -11,7 +11,7 @@ from core.config import DB_PATH
 
 class EmergencyDepartmentDAL:
     '''Used to load data into dataframes and manage SQLite connection'''
-    def __init__(self, db_name="ed_patient_data.db"):
+    def __init__(self):
         print(f"-> Connected to Central Database at: {DB_PATH}")
         self.conn = sqlite3.connect(DB_PATH,check_same_thread=False)
 

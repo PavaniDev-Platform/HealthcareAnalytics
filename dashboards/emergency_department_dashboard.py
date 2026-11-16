@@ -11,8 +11,8 @@ if str(project_root) not in sys.path:
 from core.config import CSV_DIR, DB_PATH
 print(CSV_DIR)
 print (DB_PATH)
-from Dal.emergency_departmentDAL import EmergencyDepartmentDAL
-from Biz.emergency_department_analyzer import EmergencyDepartmentAnalyzer
+from dal.emergency_department_dal import EmergencyDepartmentDAL
+from biz.emergency_department_analyzer import EmergencyDepartmentAnalyzer
 
 objERDatabaseManager=EmergencyDepartmentDAL()
 objEDAnalyzer=EmergencyDepartmentAnalyzer(objERDatabaseManager)

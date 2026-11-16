@@ -8,7 +8,7 @@ if str(project_root) not in sys.path:
 # Import your config paths
 from core.config import CSV_DIR
 #print(CSV_DIR)
-from Dal.emergency_departmentDAL import EmergencyDepartmentDAL
+from dal.emergency_department_dal import EmergencyDepartmentDAL
 #=====================Loading CSV==========================================
 dfERPatientData = pd.read_csv(
     CSV_DIR / "ed_patient_data.csv"
