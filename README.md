@@ -184,9 +184,7 @@ HeathCareAnalysis
 
 ![Demographic Overview](visuals/demographic_overview.jpeg)
 
-### Quality of Care
 
-Screenshot coming soon
 
 ---
 
