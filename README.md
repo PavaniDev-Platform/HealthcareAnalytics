@@ -173,15 +173,16 @@ HeathCareAnalysis
 
 ### Executive Overview
 
-visuals/executive_overview.jpeg
+![Executive Overview](visuals/executive_overview.jpeg)
+
 
 ### Operations Overview
 
-operation_overview.jpeg
+![Operation Overview](visuals/operation_overview.jpeg)
 
 ### Admission Trends & Demographics
 
-operation_overview.jpeg
+![Demographic Overview](visuals/demographic_overview.jpeg)
 
 ### Quality of Care
 
