@@ -75,4 +75,8 @@ class EmergencyDepartmentAnalyzer:
                       GROUP BY insurance_type"""
           dfReadmissionRateByInsuranceType=self.objERDatabaseManager.run_query(strQuery)
           return dfReadmissionRateByInsuranceType
+     def get_physician_performance_metrics(self):
+          query="""SELECT * FROM vw_PhysicianEffeciancyOverview"""
+          physician_performance_metrics=self.objERDatabaseManager.run_query(query)
+          return physician_performance_metrics
      
