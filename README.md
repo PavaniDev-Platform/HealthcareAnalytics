@@ -1,3 +1,50 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Emergency Department Analytics
 
 ## Project Overview
@@ -125,12 +172,109 @@ The project incorporates Emergency Severity Index (ESI) classifications to disti
 | 4 | Less Urgent, requires limited resources |
 | 5 | Non-Urgent, requires minimal resources |
 
+
+
+
+
+
+
+
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 For dashboard analysis:
 
 - Critical Emergencies = ESI 1 and ESI 2
 - Non-Critical Emergencies = ESI 3, 4, and 5
 
 ---
+### Business Insights & Recommendations
+
+The statistical analysis and physician performance benchmarking identified several key factors influencing patient experience and emergency department operations.
+
+#### Physician Wait Time is the Primary Driver of Patient Satisfaction
+
+A strong negative relationship was observed between physician wait time and patient satisfaction scores. Patients who experienced longer waits before physician interaction consistently reported lower satisfaction.
+
+**Business Recommendation:** Prioritize initiatives that reduce physician response delays through workflow optimization, patient routing improvements, and resource allocation strategies.
+
+---
+
+#### Physician Volume Does Not Significantly Impact Patient Satisfaction
+
+Physician workload showed little to no relationship with patient satisfaction outcomes.
+
+**Business Insight:** Patients appear to be more sensitive to waiting times than physician utilization levels.
+
+**Business Recommendation:** Focus on improving service responsiveness rather than simply increasing physician throughput.
+
+---
+
+#### Readmission Rates Are Influenced by Factors Beyond Physician Performance
+
+No meaningful relationship was identified between physician satisfaction, physician wait time, and 30-day readmission rates.
+
+**Business Insight:** Clinical outcomes such as readmissions are likely influenced by broader patient, treatment, and post-discharge factors.
+
+**Business Recommendation:** Future analysis should explore diagnosis-specific, demographic, and social determinants of readmission risk.
+
+---
+
+#### Critical Patients Report Higher Satisfaction Scores
+
+Critical patients reported significantly higher satisfaction than non-critical patients.
+
+**Business Insight:** Emergency department prioritization processes and rapid-response workflows may contribute positively to patient experience during high-acuity encounters.
+
+**Business Recommendation:** Evaluate whether elements of critical-care workflows can be applied to improve the experience of non-critical patients.
+
+---
+
+#### Top-Performing Physicians Deliver Better Patient Experiences
+
+Physician benchmarking identified a group of physicians who consistently achieved above-average satisfaction scores while maintaining below-average wait times.
+
+**Business Insight:** High-performing physicians provide valuable operational benchmarks for the department.
+
+**Business Recommendation:** Identify and standardize best practices from top-performing physicians to improve overall emergency department performance.
+
+---
+
+### Statistical Exploration
+
+To validate business assumptions and quantify operational relationships, the following statistical analyses were performed:
+
+| Business Question | Method |
+|-------------------|---------|
+| Does physician wait time impact patient satisfaction? | Pearson Correlation |
+| Does physician workload impact patient satisfaction? | Pearson Correlation |
+| Does physician satisfaction impact readmission rates? | Pearson Correlation |
+| Does physician wait time impact readmission rates? | Pearson Correlation |
+| Does critical patient volume impact physician wait times? | Pearson Correlation |
+| Do critical and non-critical patients report different satisfaction levels? | Independent Two-Sample T-Test |
+| Are some physicians consistently outperforming peers? | Physician Performance Benchmarking & Quadrant Analysis |
 
 ## Technology Stack
 
@@ -144,31 +288,60 @@ For dashboard analysis:
 - GitHub
 
 ---
+
 ## How to Run Locally
 
 Follow these steps to set up the database, generate the SQL views, and launch the interactive Dash application locally:
 
-1.   ### Clone the repository
-          git clone [https://github.com/PavaniDev-Platform/HealthcareAnalytics.git](https://github.com/PavaniDev-Platform/HealthcareAnalytics.git)
-          cd HealthcareAnalytics
+1. <br />
+
+   ### Clone the repository
+
+   ```
+    git clone [https://github.com/PavaniDev-Platform/HealthcareAnalytics.git](https://github.com/PavaniDev-Platform/HealthcareAnalytics.git)
+    cd HealthcareAnalytics
+   ```
+
 ---
-3.    ### Create a virtual environment & install dependencies
-           python -m venv venv
-           ## On Windows:
-           venv\Scripts\activate
-           ## On macOS/Linux:
-           source venv/bin/activate
-           pip install -r requirements.txt
+
+1. <br />
+
+   ### Create a virtual environment & install dependencies
+
+   ```
+    python -m venv venv
+    ## On Windows:
+    venv\Scripts\activate
+    ## On macOS/Linux:
+    source venv/bin/activate
+    pip install -r requirements.txt
+   ```
+
 ---
-4.    ### Initialize the SQLite database & SQL views
-           python dal/setup_manager.py
+
+1. <br />
+
+   ### Initialize the SQLite database & SQL views
+
+   ```
+    python dal/setup_manager.py
+   ```
+
 ---
-5.    ### Launch the Dash dashboard
-           python dashboards/emergency_department_dashboard.py
-           Open your browser and navigate to http://127.0.0.1:8050/.
+
+1. <br />
+
+   ### Launch the Dash dashboard
+
+   ```
+    python dashboards/emergency_department_dashboard.py
+    Open your browser and navigate to http://127.0.0.1:8050/.
+   ```
+
 ---
+
 ## Project Structure
-     
+
 HealthCareAnalysis
 
 │
@@ -193,12 +366,21 @@ HealthCareAnalysis
 
 ---
 
+
+
+
+
+<br />
+
+<br />
+
+<br />
+
 ## Dashboard Screenshots
 
 ### Executive Overview
 
 ![Executive Overview](visuals/executive_overview.jpeg)
-
 
 ### Operations Overview
 
@@ -208,20 +390,31 @@ HealthCareAnalysis
 
 ![Demographic Overview](visuals/demographic_overview.jpeg)
 
+### Physician Performance Benchmarking
 
+![Physician Performance Bechmarking](visuals/physicians_performance_quadrants.jpeg)
 
 ---
 
 ## Key Skills Demonstrated
 
 - Healthcare Analytics
+
 - KPI Design
+
 - SQL View Development
+
 - Data Modeling
+
 - Business Layer Architecture
+
 - Dashboard Development
+
 - Data Visualization
+
 - Operational Analytics
+
 - Quality of Care Analytics
+
 - Git & GitHub Version Control
 
