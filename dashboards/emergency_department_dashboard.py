@@ -19,7 +19,10 @@ objEDAnalyzer=EmergencyDepartmentAnalyzer(objERDatabaseManager)
 dfEmergencyDeptData=objEDAnalyzer.fetchData() #Using for raw exploration
 # KPI Cards Emergency Department
 total_admissions = dfEmergencyDeptData["visit_id"].nunique()
-avg_wait_time_doctor_min = dfEmergencyDeptData["wait_time_doctor_min"].mean().round(2)
+door_to_doc = (
+    dfEmergencyDeptData["wait_time_doctor_min"] + 
+    dfEmergencyDeptData["wait_time_triage_min"]
+).mean().round(2)
 avg_satisfaction_score = dfEmergencyDeptData["satisfaction_score"].mean().round(2)
 readmission_rate_30d = 100.0 * dfEmergencyDeptData["readmitted_30d"].sum() / dfEmergencyDeptData["visit_id"].nunique()
 total_revenue = dfEmergencyDeptData["billed_amount_usd"].sum()
@@ -27,7 +30,6 @@ total_revenue = dfEmergencyDeptData["billed_amount_usd"].sum()
 admissions_cnt = total_admissions
 physician_cnt = dfEmergencyDeptData["attending_physician"].nunique()
 critical_admissions_cnt = len(dfEmergencyDeptData.loc[dfEmergencyDeptData["triage_level"].isin([1, 2])])
-avg_wait_time_triage_min = dfEmergencyDeptData["wait_time_triage_min"].mean().round(2) 
 avg_length_of_stay_hrs = dfEmergencyDeptData["length_of_stay_hrs"].mean().round(2)
 # Demographic KPI
 demoAgeView_admission_cnt = total_admissions
@@ -171,12 +173,12 @@ operation_overview_layout=html.Div(
                 html.Div(
                     [
                         html.H4(
-                            "Triage Wait Time",
+                            "Door to Doc",
                             style=HTML_LABEL_STYLE,
                         ),
                         html.H2(
-                            f"{avg_wait_time_triage_min} min",
-                            id="avg_wait_time_triage_min-kpi",
+                            f"{door_to_doc} min",
+                            id="op_door_to_doc_min-kpi",
                             style=HTML_LABEL_VALUE_STYLE,
                         ),
                     ],
@@ -225,7 +227,7 @@ operation_overview_layout=html.Div(
                         {"label":"Physicians","value":"physicians"},
                         {"label":"Admissions","value":"admissions"},
                         {"label":"Satisfaction","value":"satisfaction"},
-                        {"label":"Triage Wait Time","value":"triage_wait_time"},
+                        {"label":"Wait Time","value":"wait_time"},
                         {"label":"Length Of Stay","value":"length_of_stay"},
                     ],
                     id="drpd-departmentOperationMetrics",
@@ -275,12 +277,12 @@ executive_overview_layout=html.Div(
                 html.Div(
                     [
                         html.H4(
-                            "Triage Wait Time",
+                            "Door to Doc",
                             style=HTML_LABEL_STYLE,
                         ),
                         html.H2(
-                            f"{avg_wait_time_doctor_min} min",
-                            id="avg_wait_time_doctor_min-kpi",
+                            f"{door_to_doc} min",
+                            id="ex_door_to_doc_min-kpi",
                             style=HTML_LABEL_VALUE_STYLE,
                         ),
                     ],
@@ -634,11 +636,11 @@ def drpd_departmentOperationMetrics_callback(selected_operation_metric):
             strCCX="number_of_critical_admissions" #dfEDOperationOverview["number_of_critical_admissions"]
             strTitle = "Admissions by Department"
             strXTitle = "Total Admissions"
-        case "triage_wait_time":
-            strX = "avg_wait_time_triage_min"  #dfEDOperationOverview["avg_wait_time_triage_min"]
-            strCCX = "avg_critical_wait_time_triage_min"  #dfEDOperationOverview["avg_critical_wait_time_triage_min"]
-            strTitle = "Triage Wait Time by Department"
-            strXTitle = "Triage Wait-Time (Min)"
+        case "wait_time":
+            strX = "avg_doortodoc_wait_time"  #dfEDOperationOverview["avg_doortodoc_wait_time"]
+            strCCX = "avg_critical_doortodoc_wait_time"  #dfEDOperationOverview["avg_critical_doortodoc_wait_time"]
+            strTitle = "Door-to-Doctor Journey by Patient Acuity"
+            strXTitle = "Wait-Time (Min)"
         case "length_of_stay":
             strX = "avg_length_of_stay_hrs"  #dfEDOperationOverview["avg_length_of_stay_hrs"]
             strCCX = "avg_critical_length_of_stay_hrs"  #dfEDOperationOverview["avg_critical_length_of_stay_hrs"]
@@ -708,11 +710,11 @@ def drpd_departmentMetrics_callback(selected_metric):
             strInsuranceX="total_admissions" #dfInsuranceOverview["total_admissions"]
             strInsuranceTitle = "Total Admissions by Insurance"
         case "Wait-Time":
-            strX = "avg_wait_time_doctor_min"  #dfExecutiveDeptOverview["avg_wait_time_doctor_min"]
-            strTitle = "Triage Wait Time by Department (Min)"
-            strXTitle = "Triage Wait Time (Min)"
-            strInsuranceX="avg_wait_time" #dfInsuranceOverview["avg_wait_time"]
-            strInsuranceTitle = "Insurance Type Impact on Patient Triage Wait Times"
+            strX = "avg_doortodoc_wait_time"  #dfExecutiveDeptOverview["avg_doortodoc_wait_time"]
+            strTitle = "Door-to-Doctor Wait-Time (Min)"
+            strXTitle = "Wait Time (Min)"
+            strInsuranceX="avg_doortodoc_wait_time" #dfInsuranceOverview["avg_doortodoc_wait_time"]
+            strInsuranceTitle = "Insurance Type Impact on Patient Wait Times"
         case "Satisfaction":
             strX = "avg_satisfaction_score" #dfExecutiveDeptOverview["avg_satisfaction_score"]
             strTitle = "Patient Satisfaction Score by Department"
@@ -772,7 +774,7 @@ def drpd_departmentMetrics_callback(selected_metric):
     #Updating the X-axis as Paitent Satisfaction has min=1.000000 and max=9.500000
     if selected_metric == "Satisfaction":
         figDeptMetric.update_xaxes(range=[0, 10])
-        figDeptInsuranceMetric.update_xaxes(range=[0, 10])
+        #figDeptInsuranceMetric.update_xaxes(range=[0, 10])
 
     return figDeptMetric , figDeptInsuranceMetric  
 

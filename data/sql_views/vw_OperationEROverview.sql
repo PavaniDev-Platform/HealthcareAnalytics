@@ -17,6 +17,7 @@ AS
         COUNT(DISTINCT attending_physician) AS criticalcare_physicians,
         COUNT(patient_id) AS number_of_critical_admissions,
         ROUND(AVG(wait_time_triage_min), 2) AS avg_critical_wait_time_triage_min,
+        ROUND(AVG(wait_time_triage_min + wait_time_doctor_min),2) As avg_critical_doortodoc_wait_time,
         ROUND(AVG(length_of_stay_hrs), 2) AS avg_critical_length_of_stay_hrs,
         ROUND(AVG(satisfaction_score), 2) AS critical_satisfaction_score
         FROM ed_patient_data
@@ -30,6 +31,7 @@ AS
         COUNT(patient_id) AS number_of_admissions,
         ROUND(AVG(length_of_stay_hrs), 2) AS avg_length_of_stay_hrs,
         ROUND(AVG(wait_time_triage_min), 2) AS avg_wait_time_triage_min,
+        ROUND(AVG(wait_time_triage_min + wait_time_doctor_min),2)  As avg_doortodoc_wait_time,
         ROUND(AVG(satisfaction_score), 2) AS satisfaction
         FROM ed_patient_data
         WHERE triage_level IN (3, 4, 5)
@@ -40,6 +42,7 @@ AS
         SELECT department,
         COUNT(patient_id) AS total_admissions,
         ROUND(AVG(wait_time_triage_min), 2) AS total_avg_wait_time_triage_min,
+        ROUND(AVG(wait_time_triage_min + wait_time_doctor_min),2)  As total_avg_doortodoc_wait_time,
         ROUND(AVG(satisfaction_score), 2) AS total_avg_satisfaction_score
         FROM ed_patient_data
         WHERE triage_level BETWEEN 1 AND 5
@@ -60,6 +63,12 @@ AS
         PD.avg_wait_time_triage_min,
         Tr.avg_critical_wait_time_triage_min,
         O.total_avg_wait_time_triage_min,
+
+         --door to doc breakdown & Overall average
+        PD.avg_doortodoc_wait_time,
+        Tr.avg_critical_doortodoc_wait_time,
+        O.total_avg_doortodoc_wait_time,
+        
         
         -- Length of stay
         PD.avg_length_of_stay_hrs,
